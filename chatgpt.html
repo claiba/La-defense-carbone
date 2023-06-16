@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Carte avec GeoJSON</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <input type="file" id="file-input">
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Création de la carte centrée sur La Défense
+    var map = L.map('map').setView([48.892, 2.238], 15);
+
+    // Ajout des tuiles CartoDB.Voyager
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: 'Données de la carte © <a href="https://openstreetmap.org">OpenStreetMap</a> contributeurs, &copy; <a href="https://carto.com">CartoDB</a>'
+    }).addTo(map);
+
+    var geojsonFile = 'quartier.geojson';
+
+    fetch(geojsonFile)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        // Création d'une couche GeoJSON et ajout à la carte
+        L.geoJSON(data).addTo(map);
+      })
+      .catch(function (error) {
+        console.log('Erreur lors du chargement du fichier GeoJSON:', error);
+      });
+  </script>
+</body>
+
+</html>
