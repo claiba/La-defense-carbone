@@ -44,11 +44,14 @@
       .then(function (data) {
         geojsonData = data;
         // Création d'une couche GeoJSON et ajout à la carte
-        L.geoJSON(data).addTo(map);
+        //L.geoJSON(data).addTo(map);
       })
       .catch(function (error) {
         console.log('Erreur lors du chargement du fichier GeoJSON:', error);
       });
+
+    L.geoJSON(geojsonData).addTo(map);
+    
   </script>
 </body>
 
