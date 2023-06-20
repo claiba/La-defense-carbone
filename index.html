@@ -37,7 +37,8 @@
       })
       .then(function (data) {
         // Création d'une couche GeoJSON et ajout à la carte
-        var geojsonLayer = L.geoJSON(data).addTo(map);}
+        L.geoJSON(data).addTo(map);
+      })
       .catch(function (error) {
         console.log('Erreur lors du chargement du fichier GeoJSON:', error);
       });
