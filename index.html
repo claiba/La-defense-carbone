@@ -35,12 +35,14 @@
             }).addTo(map);
 
     var geojsonFile = 'quartier.geojson';
+    var geojsonData;
 
     fetch(geojsonFile)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
+        geojsonData = data;
         // Création d'une couche GeoJSON et ajout à la carte
         L.geoJSON(data).addTo(map);
       })
