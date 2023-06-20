@@ -12,6 +12,11 @@
       margin: 0;
       padding: 0;
     }
+
+            .leaflet-tile-pane {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(30%) brightness(40%) invert(100%) contrast(150%) hue-rotate(260deg);
+        }
   </style>
 </head>
 
@@ -25,9 +30,9 @@
     var map = L.map('map').setView([48.892, 2.238], 15);
 
     // Ajout des tuiles CartoDB.Voyager
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: 'Données de la carte © <a href="https://openstreetmap.org">OpenStreetMap</a> contributeurs, &copy; <a href="https://carto.com">CartoDB</a>'
-    }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
 
     var geojsonFile = 'quartier.geojson';
 
