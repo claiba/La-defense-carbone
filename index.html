@@ -37,19 +37,7 @@
       })
       .then(function (data) {
         // Création d'une couche GeoJSON et ajout à la carte
-        var geojsonLayer = L.geoJSON(data).addTo(map);
-
-        // Gestionnaire d'événements de clic sur les entités GeoJSON
-        geojsonLayer.eachLayer(function (layer) {
-          layer.on('click', function (e) {
-            var properties = e.target.feature.properties;
-            // Affichage des paramètres dans la console
-            console.log(properties);
-            // Ou vous pouvez les afficher d'une autre manière, par exemple, dans une boîte modale
-            alert(JSON.stringify(properties));
-          });
-        });
-      })
+        var geojsonLayer = L.geoJSON(data).addTo(map);}
       .catch(function (error) {
         console.log('Erreur lors du chargement du fichier GeoJSON:', error);
       });
